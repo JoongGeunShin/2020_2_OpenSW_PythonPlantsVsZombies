@@ -1,3 +1,7 @@
+# Clone Repository
+2020년 2학기 공개SW 과목의 프로젝트를 위해 marblexu/PythonPlantsVsZombies 에서 Clone 후 개인 Repository를 만들어 첫 Commit 을 함.
+밑의 내용은 원본을 그대로 남겨두었음.
+
 # PythonPlantsVsZombies
   A simple PlantsVsZombies game. <br>
   `It's only for personal learning and noncommercial use. If this game infringes the copyright, please let me know.`
