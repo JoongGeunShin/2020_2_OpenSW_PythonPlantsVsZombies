@@ -9,7 +9,8 @@ PANEL_Y_START = 87
 PANEL_X_START = 22
 PANEL_Y_INTERNAL = 74
 PANEL_X_INTERNAL = 53
-CARD_LIST_NUM = 8
+CARD_MIN = 4 # 선택해야 하는 최소 카드 개수
+CARD_MAX = 8 # 선택할 수 있는 최대 카드 개수
 
 # source/constants.py 114-131
 card_name_list = [c.CARD_SUNFLOWER, c.CARD_PEASHOOTER, c.CARD_SNOWPEASHOOTER, c.CARD_WALLNUT,
@@ -109,7 +110,6 @@ class Card():
             frozen_image = self.orig_image
             frozen_image.set_alpha(128)
             frozen_height = (self.frozen_time - time)/self.frozen_time * self.rect.h
-            
             image.blit(frozen_image, (0,0), (0, 0, self.rect.w, frozen_height))
             image.blit(self.orig_image, (0,frozen_height),
                        (0, frozen_height, self.rect.w, self.rect.h - frozen_height))
@@ -277,8 +277,8 @@ class Panel():
             self.selected_cards.remove(delete_card)
             self.selected_num -= 1
 
-        if self.selected_num == CARD_LIST_NUM:
-            return
+        if self.selected_num == CARD_MAX: 
+            return # CARD_MAX의 개수를 넘지 않기 위해 밑의 for문 실행 전 return으로 종료
 
         for card in self.card_list:
             if card.checkMouseClick(mouse_pos):
@@ -297,13 +297,14 @@ class Panel():
         self.card_list[index].setSelect(True)
 
     def checkStartButtonClick(self, mouse_pos):
-        if self.selected_num < CARD_LIST_NUM:
-            return False
+        if self.selected_num < CARD_MIN:
+            return False # return True는 조건에 해당됐을때 바로 실행
 
+        # 마우스가 start 버튼안에 있는지 없는지 확인
         x, y = mouse_pos
         if (x >= self.button_rect.x and x <= self.button_rect.right and
             y >= self.button_rect.y and y <= self.button_rect.bottom):
-           return True
+           return True 
         return False
 
     def getSelectedCards(self):
@@ -321,7 +322,7 @@ class Panel():
         for card in self.selected_cards:
             card.draw(surface)
 
-        if self.selected_num == CARD_LIST_NUM:
+        if self.selected_num >= CARD_MIN:
             surface.blit(self.button_image, self.button_rect)
 
 class MoveCard():
