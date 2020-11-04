@@ -30,17 +30,17 @@ SIZE_MULTIPLIER = 1.3
 CURRENT_TIME = 'current time'
 LEVEL_NUM = 'level num'
 
-#STATES FOR ENTIRE GAME
+#STATES FOR ENTIRE GAME (전체 게임에 대한 상태)
 MAIN_MENU = 'main menu'
 LOAD_SCREEN = 'load screen'
 GAME_LOSE = 'game los'
 GAME_VICTORY = 'game victory'
 LEVEL = 'level'
 
-MAIN_MENU_IMAGE = 'MainMenu'
-OPTION_ADVENTURE = 'Adventure'
-GAME_LOOSE_IMAGE = 'GameLoose'
-GAME_VICTORY_IMAGE = 'GameVictory'
+MAIN_MENU_IMAGE = 'MainMenu' # /resources/graphics/Screen/
+OPTION_ADVENTURE = 'Adventure' # /resources/graphics/Screen/
+GAME_LOOSE_IMAGE = 'GameLoose' # /resources/graphics/Screen/
+GAME_VICTORY_IMAGE = 'GameVictory' # /resources/graphics/Screen/
 
 #MAP COMPONENTS
 BACKGROUND_NAME = 'Background'
@@ -60,10 +60,10 @@ CHOOSEBAR_TYPE = 'choosebar_type'
 CHOOSEBAR_STATIC = 0
 CHOOSEBAR_MOVE = 1
 CHOSSEBAR_BOWLING = 2
-MENUBAR_BACKGROUND = 'ChooserBackground'
-MOVEBAR_BACKGROUND = 'MoveBackground'
-PANEL_BACKGROUND = 'PanelBackground'
-START_BUTTON = 'StartButton'
+MENUBAR_BACKGROUND = 'ChooserBackground' # /resources/graphics/Screen/ 
+MOVEBAR_BACKGROUND = 'MoveBackground' # /resources/graphics/Screen/
+PANEL_BACKGROUND = 'PanelBackground' # /resources/graphics/Screen/
+START_BUTTON = 'StartButton' # /resources/graphics/Screen/
 CARD_POOL = 'card_pool'
 
 MOVEBAR_CARD_FRESH_TIME = 6000
@@ -71,7 +71,7 @@ CARD_MOVE_TIME = 60
 
 #PLANT INFO
 PLANT_IMAGE_RECT = 'plant_image_rect'
-CAR = 'car'
+CAR = 'car' # /resources/graphics/Screen/
 SUN = 'Sun'
 SUNFLOWER = 'SunFlower'
 PEASHOOTER = 'Peashooter'
@@ -81,7 +81,7 @@ CHERRYBOMB = 'CherryBomb'
 THREEPEASHOOTER = 'Threepeater'
 REPEATERPEA = 'RepeaterPea'
 CHOMPER = 'Chomper'
-CHERRY_BOOM_IMAGE = 'Boom'
+CHERRY_BOOM_IMAGE = 'Boom' # /resources/graphics/Screen/ 
 PUFFSHROOM = 'PuffShroom'
 POTATOMINE = 'PotatoMine'
 SQUASH = 'Squash'
