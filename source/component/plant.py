@@ -83,21 +83,21 @@ class Bullet(pg.sprite.Sprite):
         
         self.frames = self.fly_frames
 
-    def update(self, game_info):
+    def update(self, game_info): # self.state 의 상태는 C.FLY 가 초기화, setExplode를 통해 c.EXPLODE 로 변경
         self.current_time = game_info[c.CURRENT_TIME]
         if self.state == c.FLY:
             if self.rect.y != self.dest_y:
                 self.rect.y += self.y_vel
                 if self.y_vel * (self.dest_y - self.rect.y) < 0:
                     self.rect.y = self.dest_y
-            self.rect.x += self.x_vel
-            if self.rect.x > c.SCREEN_WIDTH:
-                self.kill()
+            self.rect.x += self.x_vel # x_vel 만큼 더 해서 그림. 
+            if self.rect.x > c.SCREEN_WIDTH: # 그리던 화면(bullet)이 전체 화면을 넘어가면 사라진다
+                self.kill() 
         elif self.state == c.EXPLODE:
-            if(self.current_time - self.explode_timer) > 500:
-                self.kill()
+            if(self.current_time - self.explode_timer) > 500: # 0.5초
+                self.kill() 
 
-    def setExplode(self):
+    def setExplode(self): # level.py > Level > checkBulletCollisions > bullet.setExplode() 호출
         self.state = c.EXPLODE
         self.explode_timer = self.current_time
         self.frames = self.explode_frames
@@ -227,7 +227,7 @@ class Sun(Plant):
             scale = 0.6
             self.sun_value = 12
         Plant.__init__(self, x, y, c.SUN, 0, None, scale)
-        self.move_speed = 1
+        self.move_speed = 1 # 해 떨어지는 속도
         self.dest_x = dest_x
         self.dest_y = dest_y
         self.die_timer = 0

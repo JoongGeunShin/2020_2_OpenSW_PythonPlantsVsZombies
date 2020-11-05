@@ -30,8 +30,10 @@ class Control():
     def __init__(self):
         self.screen = pg.display.get_surface()
         self.done = False
-        self.clock = pg.time.Clock()
-        self.fps = 60
+        self.clock = pg.time.Clock() # 게임 루프의 주기를 결정할 객체
+        self.fps = 60 # 프레임 설정
+        self.dt = self.clock.tick(self.fps) # 지연시간
+        self.onoff = 1 # 1 = 기본, 0 = 배속
         self.keys = pg.key.get_pressed()
         self.mouse_pos = None
         self.mouse_click = [False, False]  # value:[left mouse click, right mouse click]
@@ -75,6 +77,19 @@ class Control():
                 self.mouse_pos = pg.mouse.get_pos()
                 self.mouse_click[0], _, self.mouse_click[1] = pg.mouse.get_pressed()
                 print('pos:', self.mouse_pos, ' mouse:', self.mouse_click)
+                self.speed_switch() # 속도 조절 함수
+
+    # 기능 추가중
+    def speed_switch(self):
+        self.mouse_pos = pg.mouse.get_pos()
+        if(self.mouse_pos[0] > 30 and self.mouse_pos[0] < 70 and self.mouse_pos[1] > 15 and self.mouse_pos[1] < 50):
+            self.onoff = 0 # -> self.onoff = 0 배속
+            print("현재 self.onoff: ", self.onoff, " -> 배속중")
+            return self.onoff
+        else:
+            self.onoff = 1 # -> self.onoff = 1 기본속도
+            print("현재 self.onoff: ", self.onoff, " -> 기본속도")
+            return self.onoff
 
     def main(self):
         while not self.done:
@@ -82,6 +97,7 @@ class Control():
             self.update()
             pg.display.update()
             self.clock.tick(self.fps)
+            #print("dt: {0}, fps: {1}".format(self.dt, self.clock.get_fps()))
         print('game over')
 
 def get_image(sheet, x, y, width, height, colorkey=c.BLACK, scale=1):

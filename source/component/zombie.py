@@ -34,7 +34,7 @@ class Zombie(pg.sprite.Sprite):
         self.ice_slow_ratio = 1
         self.ice_slow_timer = 0
         self.hit_timer = 0
-        self.speed = 1
+        self.speed = 1 # 좀비 기본 속도
         self.freeze_timer = 0
         self.is_hypno = False # the zombie is hypo and attack other zombies when it ate a HypnoShroom
     
@@ -52,6 +52,14 @@ class Zombie(pg.sprite.Sprite):
         self.handleState()
         self.updateIceSlow()
         self.animation()
+
+        # 좀비 속도 조절
+        control = tool.Control()
+        self.onoff = control.speed_switch()
+        if(self.onoff == 1):
+            self.speed = 1
+        elif(self.onoff == 0):
+            self.speed = 3 # 속도를 +2만큼 올림
 
     def handleState(self):
         if self.state == c.WALK:
